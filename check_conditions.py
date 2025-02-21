@@ -1,4 +1,11 @@
-  import pandas as pd
+
+"""
+  !!! This code filters condition-score combinations within a user-defined score range while excluding specific keywords to refine trade signal analysis.
+  """
+
+
+
+import pandas as pd
 
 def get_score_range():
     min_score = float(input("Minimum skor yüzdesini girin: "))
