@@ -16,12 +16,13 @@ def filter_scores_by_range(min_score, max_score):
     try:
         df = pd.read_csv("condition_combinations_scores.csv")
 
-        exclude_keywords = ["TREND", "STRONG_SIGNAL", "CYPHER_PATTERN"]
+        exclude_keywords = ["TREND", "STRONG_SIGNAL", "CYPHER_PATTERN"]  # optional
         filtered_df = df[
             (df["Score %"] >= min_score) & 
             (df["Score %"] <= max_score) & 
             ~df["Sağlanan Şartlar"].str.contains('|'.join(exclude_keywords), na=False)
         ]
+        filtered_df = filtered_df.sort_values(by="Score %", ascending=False)
 
         print("\nBu aralıktaki skorlar ve ilgili koşullar:")
         print(filtered_df.to_string(index=False))
